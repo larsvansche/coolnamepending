@@ -1,0 +1,42 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./app-in-element">
+<link rel="import" href="./app-out-element">
+
+<dom-module id="app-common-element">
+  <template>
+    <style>
+    </style>
+
+    <h1>App-common element</h1>
+    <app-in-element></app-in-element>
+    <app-out-element></app-out-element>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Appcommonelement extends Polymer.Element {
+      static get is() { return 'app-common-element'; }
+      static get properties() {
+        return {
+          naam: {
+            type: String,
+            value: 'Sushi'
+          },
+          prijs: {
+            type: Number,
+            value: 20
+          },
+          bereidingstijd: {
+            type: Number,
+            value: 15
+          }
+        };
+      }
+    }
+
+    window.customElements.define(Appcommonelement.is, Appcommonelement);
+  </script>
+</dom-module>

@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="singledish-element">
+  <template>
+    <style>
+
+    </style>
+
+    <h2 id="dishName">Gerecht 1</h2>
+
+    &euro;<span id="dishPrice">23,00</span><br>
+
+    <span id="prepTime">30</span> minuten voorbereiden
+
+    <div class="ingredientList">
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+        <div class="ingredient">Ingredient 1</div>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Singledishelement extends Polymer.Element {
+      static get is() { return 'singledish-element'; }
+      static get properties() {
+        return {
+          naam: {
+            type: String,
+            value: 'Sushi'
+          },
+          prijs: {
+            type: Number,
+            value: 20
+          },
+          bereidingstijd: {
+            type: Number,
+            value: 15
+          },
+          ingredienten: {
+            type: Array,
+            value: ["ingredient1", "ingredient2", "ingredient3", "ingredient4"]
+          }
+        };
+      }
+    }
+
+    window.customElements.define(Singledishelement.is, Singledishelement);
+  </script>
+</dom-module>

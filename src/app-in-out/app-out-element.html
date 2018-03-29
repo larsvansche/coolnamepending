@@ -1,0 +1,77 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+
+
+
+<dom-module id="app-out-element">
+  <template>
+    <style>
+
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+     id="route"
+     route="{{route}}"
+     pattern="/:page"
+     data="{{routeData}}">
+    </app-route>
+
+    <h2>{{getNaam(dishes)}}</h2>
+    <div>€ {{getPrijs(dishes)}}</div>
+    <div>{{getBereidingstijd(dishes)}} minuten om te maken</div>
+
+    <div>{{route.queryParams.dishes.naam}}</div>
+
+    <app-localstorage-document key="dishes" data="{{dishes}}"></app-localstorage-document>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Appoutelement extends Polymer.Element {
+      static get is() { return 'app-out-element'; }
+      static get properties() {
+        return {
+          dishes: Object
+        };
+      }
+      getNaam(dishes) {
+        for (var dish of dishes) {
+
+          if (dish.naam === window.location.search.split('=')[1]) {
+            return dish.naam;
+          }
+
+          // if (dishes[window.location.search.split('=')[1]].naam === dish.naam) {
+          //   return dish.naam;
+          // }
+        }
+      }
+      getPrijs(dishes) {
+        for (var dish of dishes) {
+          if (dish.naam === window.location.search.split('=')[1]) {
+            return dish.prijs;
+          }
+        }
+      }
+      getBereidingstijd(dishes) {
+        for (var dish of dishes) {
+          if (dish.naam === window.location.search.split('=')[1]) {
+            return dish.bereidingstijd;
+          }
+        }
+      }
+    }
+
+    // let dish = window.location.search.split('=')[1];
+
+    // console.log(dish);
+
+    window.customElements.define(Appoutelement.is, Appoutelement);
+  </script>
+</dom-module>

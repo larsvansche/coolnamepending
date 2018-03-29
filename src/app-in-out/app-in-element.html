@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
+<dom-module id="app-in-element">
+  <template>
+    <style>
+    </style>
+
+    <paper-input label="Naam" id="naam" value="{{naam}}"></paper-input>
+    <paper-input label="Prijs" id="prijs" value="{{prijs}}"></paper-input>
+    <paper-input label="Bereidingstijd"  id="bereidingstijd" value="{{bereidingstijd}}"></paper-input>
+
+    <paper-button on-click="buttonPress">Opslaan</paper-button>
+
+    <app-localstorage-document key="dishes" data="{{dishes}}"></app-localstorage-document>
+
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Appinelement extends Polymer.Element {
+      static get is() { return 'app-in-element'; }
+      static get properties() {
+        return {
+          dishes: {
+            type: Array,
+            value: []
+          }
+          // naam: String,
+          // prijs: Number,
+          // bereidingstijd: Number
+        };
+      }
+
+      buttonPress() {
+        console.log(this.$.naam.value);
+        let newDish = {
+          naam: this.$.naam.value,
+          prijs: this.$.prijs.value,
+          bereidingstijd: this.$.bereidingstijd.value
+        }
+        this.push('dishes', newDish);
+        this.notifyPath('dishes');
+      }
+    }
+
+    window.customElements.define(Appinelement.is, Appinelement);
+  </script>
+</dom-module>

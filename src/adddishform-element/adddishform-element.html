@@ -1,0 +1,65 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<dom-module id="adddishform-element">
+  <template>
+    <style>
+      .formInput {
+          float: left;
+          width: 100%;
+          padding-bottom: 5px;
+          border-bottom: 1px solid #DDD;
+          margin-bottom: 5px;
+      }
+
+      .formInput label {
+          float: left;
+      }
+
+      .formInput input {
+          float: right;
+      }
+    </style>
+
+    <div class="formInput">
+        <paper-input label="Naam" value="{{naam}}"></paper-input>
+    </div>
+    <div>Naam = "[[naam]]"</div>
+    <div class="formInput">
+        <paper-input label="Prijs" value="{{prijs}}"></paper-input>
+    </div>
+    <div>Prijs = "[[prijs]]"</div>
+    <div class="formInput">
+        <paper-input label="Bereidingstijd" value="{{bereidingstijd}}"></paper-input>
+    </div>
+    <div>Bereidingstijd = "[[bereidingstijd]]"</div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Adddishformelement extends Polymer.Element {
+      static get is() { return 'adddishform-element'; }
+      static get properties() {
+        return {
+          naam: {
+            type: String,
+            value: 'Sushi'
+          },
+          prijs: {
+            type: Number,
+            value: 20
+          },
+          bereidingstijd: {
+            type: Number,
+            value: 15
+          }
+        };
+      }
+    }
+
+    window.customElements.define(Adddishformelement.is, Adddishformelement);
+  </script>
+</dom-module>

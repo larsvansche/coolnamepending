@@ -1,0 +1,6 @@
+{
+  "name": "coolnamepending",
+  "short_name": "coolnamepending",
+  "start_url": "/",
+  "display": "standalone"
+}

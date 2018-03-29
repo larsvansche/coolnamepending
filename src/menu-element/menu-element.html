@@ -1,0 +1,65 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="menu-element">
+  <template>
+    <style>
+    .menu {
+        list-style-type: none;
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        float: left;
+    }
+
+    .menu li {
+        display: block;
+        float: left;
+        border: 5px solid black;
+        border-right: none;
+        box-sizing: border-box;
+        width: 25%;
+        height: 100%;
+    }
+
+    .menu li:last-child {
+        border-right: 5px solid black;
+    }
+
+    .menu li a {
+        padding: 15px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        height: 100%;
+    }
+    </style>
+    <ul class="menu">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="dishes.html">Gerechten</a></li>
+        <li><a href="#">Ingrediënten</a></li>
+        <li><a href="#">Bestellen</a></li>
+    </ul>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Menu extends Polymer.Element {
+      static get is() { return 'menu-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'menu-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(Menu.is, Menu);
+  </script>
+</dom-module>
